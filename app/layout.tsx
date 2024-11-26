@@ -25,7 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className='text-center text-3xl text-white font-bold mx-auto space-x-10 p-10'>
+          <a href='question-one'>Link: Q1</a>
+          <a href='question-two'>Link: Q2</a>
+        </div>
+
+        {children}
+      </body>
     </html>
   );
 }
