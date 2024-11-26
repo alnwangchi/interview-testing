@@ -67,17 +67,19 @@ const DatePicker: FC = () => {
             currentDate.isAfter(selectedStartDate, 'day') &&
             currentDate.isBefore(selectedEndDate, 'day');
 
+          const bgColor =
+            isBetweenDates ||
+            selectedStartDate?.isSame(currentDate) ||
+            selectedEndDate?.isSame(currentDate)
+              ? 'bg-blue-300'
+              : 'bg-white';
+
           return (
             <div
               key={idx}
-              className={`flex justify-center items-center p-3 bg-white text-black ${
+              className={`flex justify-center items-center p-3 text-black ${
                 !isCurrentMonth ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
-              } ${isToday ? 'bg-yellow-100' : ''} ${
-                selectedStartDate?.isSame(currentDate) || selectedEndDate?.isSame(currentDate)
-                  ? 'bg-blue-300'
-                  : ''
-              } 
-              ${isBetweenDates ? 'bg-blue-300' : ''}`}
+              } ${isToday ? 'bg-yellow-100' : ''} ${bgColor}`}
               onClick={() => {
                 if (!isCurrentMonth) return;
                 handleDateClick(currentDate);
