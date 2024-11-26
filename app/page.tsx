@@ -9,11 +9,6 @@ const DatePicker: FC = () => {
   const [selectedStartDate, setSelectedStartDate] = useState<Dayjs | null>(null);
   const [selectedEndDate, setSelectedEndDate] = useState<Dayjs | null>(null);
 
-  console.log({
-    start: selectedStartDate?.format('MM-DD'),
-    end: selectedEndDate?.format('MM-DD'),
-  });
-
   const cannotChangeMonth = selectedStartDate || selectedEndDate;
 
   const handleDateClick = (day: Dayjs) => {
@@ -139,7 +134,10 @@ const DatePicker: FC = () => {
 export default function Home() {
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      <DatePicker />
+      <div className='space-y-10'>
+        <h1 className='text-center text-3xl text-white font-bold'>React Question 2 - Task 1</h1>
+        <DatePicker />
+      </div>
     </div>
   );
 }
