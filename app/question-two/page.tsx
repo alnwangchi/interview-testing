@@ -13,11 +13,11 @@ const DatePicker: FC = () => {
 
   const handleDateClick = (day: Dayjs) => {
     if (!selectedStartDate) {
-      // 如果還沒有選擇開始日期，直接設定為開始日期
+      // 最單純的第一次點擊
       setSelectedStartDate(day);
     } else {
+      // 已經有開始和結束日期的情況 第三次後所有的點擊情況
       if (selectedEndDate) {
-        // 已經有開始和結束日期的情況
         if (day.isBefore(selectedStartDate)) {
           // 如果選擇的日期早於當前開始日期，則延長開始日期
           setSelectedStartDate(day);
@@ -38,12 +38,11 @@ const DatePicker: FC = () => {
           }
         }
       } else {
-        // 只有開始日期，還沒有結束日期的情況
+        // 只有開始日期 次單存的第二次點擊
         if (day.isBefore(selectedStartDate)) {
-          // 如果選擇的日期早於當前開始日期，將新日期設為開始日期
           setSelectedStartDate(day);
+          setSelectedEndDate(selectedStartDate);
         } else {
-          // 如果選擇的日期晚於開始日期
           setSelectedEndDate(day);
         }
       }
